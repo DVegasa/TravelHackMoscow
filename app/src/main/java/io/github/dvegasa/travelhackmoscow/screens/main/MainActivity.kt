@@ -5,19 +5,30 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import io.github.dvegasa.travelhackmoscow.R
+import io.github.dvegasa.travelhackmoscow.screens.main.discover.DiscoverFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     var currentScreen = 0
 
+    val discover = DiscoverFragment()
+
+    val listFragment = listOf(DiscoverFragment(), DiscoverFragment(), DiscoverFragment(), DiscoverFragment())
+
+    val nsvpAdapter = NsvpAdapter(supportFragmentManager, listFragment)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        // fullscreen()
         supportActionBar?.hide()
         initBottomNav()
+        initNsvp()
         updateUi()
+    }
+
+    private fun initNsvp() {
+        nsvp.adapter = nsvpAdapter
     }
 
     private fun updateUi() {
@@ -39,6 +50,8 @@ class MainActivity : AppCompatActivity() {
             DrawableCompat.wrap(active.drawable),
             ResourcesCompat.getColor(resources, R.color.colorAccent, null)
         )
+
+        nsvp.currentItem = currentScreen
     }
 
     private fun initBottomNav() {

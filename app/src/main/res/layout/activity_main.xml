@@ -7,6 +7,12 @@
         tools:context=".screens.main.MainActivity"
         android:background="@color/colorBackground">
 
+    <io.github.dvegasa.travelhackmoscow.helpers.NonSwipeableViewPager
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/nsvp"
+            android:layout_marginBottom="45dp"/>
+
     <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="12dp"

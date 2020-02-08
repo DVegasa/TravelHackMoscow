@@ -47,7 +47,7 @@ dependencies {
 
     // gson
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
-    
+
     // Bottom nav bar
     implementation 'com.aurelhubert:ahbottomnavigation:2.3.4'
 
