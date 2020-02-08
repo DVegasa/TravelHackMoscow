@@ -13,6 +13,7 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import io.github.dvegasa.travelhackmoscow.R
 import io.github.dvegasa.travelhackmoscow.helpers.ImageHelper
+import io.github.dvegasa.travelhackmoscow.pojos.ImgQuizAnswer
 import io.github.dvegasa.travelhackmoscow.pojos.ImgQuizData
 import io.github.dvegasa.travelhackmoscow.screens.quiz_asking.QuizAskingActivity
 import kotlinx.android.synthetic.main.black.view.*
@@ -43,37 +44,73 @@ class ImgQuizFragment : Fragment() {
 
         root.apply {
             iv1.setOnClickListener {
-                val v = LayoutInflater.from(this@ImgQuizFragment.host.baseContext)
-                    .inflate(R.layout.black, iv1)
-                v.tvNumber.text = state++.toString()
-            }
-            iv2.setOnClickListener {
-                val v = LayoutInflater.from(this@ImgQuizFragment.host.baseContext)
-                    .inflate(R.layout.black, iv2)
-                v.tvNumber.text = state++.toString()
-            }
-            iv3.setOnClickListener {
-                val v = LayoutInflater.from(this@ImgQuizFragment.host.baseContext)
-                    .inflate(R.layout.black, iv3)
-                v.tvNumber.text = state++.toString()
-            }
-            iv4.setOnClickListener {
-                val v = LayoutInflater.from(this@ImgQuizFragment.host.baseContext)
-                    .inflate(R.layout.black, iv4)
-                v.tvNumber.text = state++.toString()
+                if (quizData.imgIds[0] !in pickedIds) {
+                    pickedIds.add(quizData.imgIds[0])
+
+                    val v = LayoutInflater.from(this@ImgQuizFragment.host.baseContext)
+                        .inflate(R.layout.black, iv1)
+                    v.tvNumber.text = state++.toString()
+                    checkForSendAnswers()
+                }
             }
 
+            iv2.setOnClickListener {
+                if (quizData.imgIds[1] !in pickedIds) {
+                    pickedIds.add(quizData.imgIds[1])
+
+                    val v = LayoutInflater.from(this@ImgQuizFragment.host.baseContext)
+                        .inflate(R.layout.black, iv2)
+                    v.tvNumber.text = state++.toString()
+                    checkForSendAnswers()
+                }
+            }
+
+            iv3.setOnClickListener {
+                if (quizData.imgIds[2] !in pickedIds) {
+                    pickedIds.add(quizData.imgIds[2])
+
+                    val v = LayoutInflater.from(this@ImgQuizFragment.host.baseContext)
+                        .inflate(R.layout.black, iv3)
+                    v.tvNumber.text = state++.toString()
+                    checkForSendAnswers()
+                }
+            }
+
+            iv4.setOnClickListener {
+                if (quizData.imgIds[3] !in pickedIds) {
+                    pickedIds.add(quizData.imgIds[3])
+
+                    val v = LayoutInflater.from(this@ImgQuizFragment.host.baseContext)
+                        .inflate(R.layout.black, iv4)
+                    v.tvNumber.text = state++.toString()
+                    checkForSendAnswers()
+                }
+            }
         }
     }
 
-    fun getQuizData() {
+    private fun checkForSendAnswers() {
+        if (pickedIds.size == 4) {
+            sendAnswers()
+            host.nextQuestion()
+        }
+    }
+
+    private fun sendAnswers() {
+        host.addAnswer(ImgQuizAnswer(ArrayList(pickedIds)))
+    }
+
+    private fun getQuizData() {
         quizData = host.quizes[host.currentQuestion] as ImgQuizData
     }
 
-    fun loadImages() {
-        val images = ArrayList<Bitmap>()
+    private fun loadImages() {
+        val images = Array<Bitmap?>(4) { null }
         for (i in 0..3) {
-            Glide.with(this).asBitmap().load(quizData.urls[i])
+            Glide
+                .with(this)
+                .asBitmap()
+                .load(quizData.urls[i])
                 .into(object : CustomTarget<Bitmap>() {
                     override fun onLoadCleared(placeholder: Drawable?) {
                     }
@@ -82,17 +119,17 @@ class ImgQuizFragment : Fragment() {
                         resource: Bitmap,
                         transition: Transition<in Bitmap>?
                     ) {
-                        images.add(resource)
+                        images[i] = resource
                         if (images.size >= 4) {
 
-                            images.forEachIndexed { i, bitmap ->
-                                images[i] = ImageHelper.getRoundedCornerBitmap(bitmap, 50)
+                            val dest = when (i) {
+                                0 -> root.iv1
+                                1 -> root.iv2
+                                2 -> root.iv3
+                                else -> root.iv4
                             }
-
-                            root.iv1.background = BitmapDrawable(resources, images[0])
-                            root.iv2.background = BitmapDrawable(resources, images[1])
-                            root.iv3.background = BitmapDrawable(resources, images[2])
-                            root.iv4.background = BitmapDrawable(resources, images[3])
+                            dest.background = BitmapDrawable(resources, images[i])
+                            images[i] = ImageHelper.getRoundedCornerBitmap(images[i], 40)
                         }
                     }
                 })

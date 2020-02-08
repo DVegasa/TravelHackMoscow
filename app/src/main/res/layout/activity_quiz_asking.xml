@@ -18,14 +18,14 @@
     <FrameLayout
             android:id="@+id/flQuiz"
             android:layout_width="match_parent"
-            android:layout_marginRight="12dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginBottom="128dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
             android:foregroundGravity="center"
             app:layout_constraintBottom_toTopOf="@+id/tvQuestionsLeft"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
             android:id="@+id/tvQuestionsLeft"

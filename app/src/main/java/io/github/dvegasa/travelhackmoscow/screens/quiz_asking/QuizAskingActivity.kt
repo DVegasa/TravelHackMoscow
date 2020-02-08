@@ -1,5 +1,6 @@
 package io.github.dvegasa.travelhackmoscow.screens.quiz_asking
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import io.github.dvegasa.travelhackmoscow.R
@@ -9,6 +10,7 @@ import io.github.dvegasa.travelhackmoscow.helpers.fullscreen
 import io.github.dvegasa.travelhackmoscow.helpers.info
 import io.github.dvegasa.travelhackmoscow.pojos.ImgQuizData
 import io.github.dvegasa.travelhackmoscow.pojos.SlideQuizData
+import io.github.dvegasa.travelhackmoscow.screens.main.MainActivity
 import io.github.dvegasa.travelhackmoscow.screens.quiz_asking.quiz_fragments.ImgQuizFragment
 import io.github.dvegasa.travelhackmoscow.screens.quiz_asking.quiz_fragments.SlideQuizFragment
 import kotlinx.android.synthetic.main.activity_quiz_asking.*
@@ -18,7 +20,7 @@ class QuizAskingActivity : AppCompatActivity() {
     val quizes = ArrayList<FirstQuiz>()
     var currentQuestion = -1
 
-    val answers = ArrayList<QuizAnswer>()
+    private val answers = ArrayList<QuizAnswer>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +52,27 @@ class QuizAskingActivity : AppCompatActivity() {
                 listOf(1, 2, 3, 4)
             )
         )
+        quizes.add(
+            SlideQuizData(
+                0,
+                "Мяу",
+                listOf("Мяу", "Мур", "Суп"),
+                listOf("Не моё. Не хочу", "Сойдёт. Почему бы и нет?", "АААА БОЖЕЧКИ МУР ^_^")
+            )
+        )
+        quizes.add(
+            ImgQuizData(
+                2,
+                "Нажми на картинки в том порядке, в каком они тебе понравились",
+                listOf(
+                    "https://picsum.photos/id/${(1..200).random()}/200/200",
+                    "https://picsum.photos/id/${(1..200).random()}/200/200",
+                    "https://picsum.photos/id/${(1..200).random()}/200/200",
+                    "https://picsum.photos/id/${(1..200).random()}/200/200"
+                ),
+                listOf(1, 2, 3, 4)
+            )
+        )
         nextQuestion()
     }
 
@@ -58,6 +81,7 @@ class QuizAskingActivity : AppCompatActivity() {
 
         if (currentQuestion >= quizes.size) {
             sendAnswers()
+            startActivity(Intent(this, MainActivity::class.java))
             return
         }
 
