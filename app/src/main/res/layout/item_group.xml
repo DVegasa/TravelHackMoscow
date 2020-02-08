@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_button_">
+
+    <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="12dp"
+            android:drawableLeft="@drawable/ic_invite"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/mont_semib"
+            android:textSize="11sp"
+            tools:text="Приглашение" />
+
+    <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="12dp"
+            android:fontFamily="@font/mont_semib"
+            android:textColor="#000"
+            android:textSize="20sp"
+            tools:text="Привет, мир!" />
+
+    <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="12dp"
+            android:fontFamily="@font/mont_medi"
+            android:textColor="#828282"
+            android:textSize="16sp"
+            tools:text="Привет, мир!" />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivInviter"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="12dp"
+                android:src="@drawable/ava_3" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/mont_medi"
+                android:textColor="#000"
+                android:textSize="16sp"
+                tools:text="DVegasa" />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="8dp"
+            android:background="#EEEEEE" />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="12dp"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/ic_cancel"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/mont_semib"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:text="ОТКАЗАТЬСЯ"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp" />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="12dp"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/ic_accept"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/mont_semib"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:text="ПРИНЯТЬ"
+                android:textColor="#7FB069"
+                android:textSize="16sp" />
+    </LinearLayout>
+
+</LinearLayout>
