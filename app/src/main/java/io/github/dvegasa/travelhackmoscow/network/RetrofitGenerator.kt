@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  * Created by Ed Khalturin @DVegasa
  */
 object RetrofitGenerator {
-    const val BASE_URL = "https://api.exchangeratesapi.io/"
+    var BASE_URL = "http://192.168.43.232:8000/"
 
     val retrofitClient : BackendAPI by lazy {
         val retrofit = Retrofit.Builder()

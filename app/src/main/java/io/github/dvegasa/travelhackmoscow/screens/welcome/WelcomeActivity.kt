@@ -5,9 +5,17 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import io.github.dvegasa.travelhackmoscow.R
+import io.github.dvegasa.travelhackmoscow.helpers.MyApplication
 import io.github.dvegasa.travelhackmoscow.helpers.fullscreen
+import io.github.dvegasa.travelhackmoscow.helpers.info
+import io.github.dvegasa.travelhackmoscow.network.RetrofitGenerator
+import io.github.dvegasa.travelhackmoscow.network.requests.AuthRequest
+import io.github.dvegasa.travelhackmoscow.screens.main.MainActivity
 import io.github.dvegasa.travelhackmoscow.screens.quiz_start.QuizStartActivity
 import kotlinx.android.synthetic.main.activity_welcome.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class WelcomeActivity : AppCompatActivity() {
@@ -56,22 +64,41 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     private fun doLogin() {
+        btnContinue.isEnabled = false
         val login = etLogin.text.toString()
         val pass = etPassword.text.toString()
-        // TODO LOGIN
+        RetrofitGenerator.retrofitClient.register(AuthRequest(login, pass))
+            .enqueue(object : Callback<AuthRequest> {
+                override fun onFailure(call: Call<AuthRequest>, t: Throwable) {
+                    info(t)
+                    MyApplication.username = login
+                    startActivity(Intent(this@WelcomeActivity, MainActivity::class.java))
+                }
 
-        nextScreen()
+                override fun onResponse(call: Call<AuthRequest>, response: Response<AuthRequest>) {
+                    info(response.body())
+                    MyApplication.username = login
+                    startActivity(Intent(this@WelcomeActivity, MainActivity::class.java))
+                }
+            })
     }
 
     private fun doRegister() {
         val login = etLogin.text.toString()
         val pass = etPassword.text.toString()
-        // TODO LOGIN
+        RetrofitGenerator.retrofitClient.register(AuthRequest(login, pass))
+            .enqueue(object : Callback<AuthRequest> {
+                override fun onFailure(call: Call<AuthRequest>, t: Throwable) {
+                    info(t)
+                    MyApplication.username = login
+                    startActivity(Intent(this@WelcomeActivity, QuizStartActivity::class.java))
+                }
 
-        nextScreen()
-    }
-
-    private fun nextScreen() {
-        startActivity(Intent(this, QuizStartActivity::class.java))
+                override fun onResponse(call: Call<AuthRequest>, response: Response<AuthRequest>) {
+                    info(response.body())
+                    MyApplication.username = login
+                    startActivity(Intent(this@WelcomeActivity, QuizStartActivity::class.java))
+                }
+            })
     }
 }

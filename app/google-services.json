@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "909822792830",
+    "firebase_url": "https://russpass-8d00a.firebaseio.com",
+    "project_id": "russpass-8d00a",
+    "storage_bucket": "russpass-8d00a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:909822792830:android:124177c1d123b84cb9b42f",
+        "android_client_info": {
+          "package_name": "io.github.dvegasa.travelhackmoscow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "909822792830-g75vuuhlqoajbtls9p0j849p62d3urq9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBy4Imz2YAfxAUzyIAHYoQHQuwQf6I4eOc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "909822792830-g75vuuhlqoajbtls9p0j849p62d3urq9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

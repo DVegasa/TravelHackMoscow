@@ -33,44 +33,32 @@ class QuizAskingActivity : AppCompatActivity() {
     private fun loadQuiz() {
         quizes.add(
             SlideQuizData(
-                0,
-                "Hello world",
-                listOf("Слабо", "Нормально", "Обожаю"),
-                listOf("Не моё. Не хочу", "Сойдёт. Почему бы и нет?", "АААА БОЖЕЧКИ МУР ^_^")
-            )
-        )
-        quizes.add(
-            ImgQuizData(
-                2,
-                "Нажми на картинки в том порядке, в каком они тебе нравятся",
-                listOf(
-                    "https://picsum.photos/id/${(1..200).random()}/200/200",
-                    "https://picsum.photos/id/${(1..200).random()}/200/200",
-                    "https://picsum.photos/id/${(1..200).random()}/200/200",
-                    "https://picsum.photos/id/${(1..200).random()}/200/200"
-                ),
-                listOf(1, 2, 3, 4)
+                0, // ID
+                "Насколько вы любите ходить пешком?", // Title
+                listOf("Слабо", "Нормально", "Обожаю"), // Облако
+                listOf("Очень не люблю", "Сойдёт. Почему бы и нет?", "Люблю отлично прогуляться!") // Снизу
             )
         )
         quizes.add(
             SlideQuizData(
-                0,
-                "Мяу",
-                listOf("Мяу", "Мур", "Суп"),
-                listOf("Не моё. Не хочу", "Сойдёт. Почему бы и нет?", "АААА БОЖЕЧКИ МУР ^_^")
+                1, // ID
+                "Насколько вы любите архитектуру?", // Title
+                listOf("Не хочу", "Нейтрально", "Обожаю"), // Облако
+                listOf("Очень не люблю", "Можно и посмотреть", "Жить без этого не могу!") // Снизу
             )
         )
+
         quizes.add(
             ImgQuizData(
-                2,
-                "Нажми на картинки в том порядке, в каком они тебе понравились",
+                2, // ID вопроса
+                "Нажми на картинки в том порядке, в каком они тебе нравятся", // Title
                 listOf(
                     "https://picsum.photos/id/${(1..200).random()}/200/200",
                     "https://picsum.photos/id/${(1..200).random()}/200/200",
                     "https://picsum.photos/id/${(1..200).random()}/200/200",
                     "https://picsum.photos/id/${(1..200).random()}/200/200"
                 ),
-                listOf(1, 2, 3, 4)
+                listOf(1, 2, 3, 4) // ID картинок
             )
         )
         nextQuestion()
