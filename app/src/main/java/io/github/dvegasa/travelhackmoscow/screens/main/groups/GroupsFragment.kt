@@ -1,5 +1,6 @@
 package io.github.dvegasa.travelhackmoscow.screens.main.groups
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import io.github.dvegasa.travelhackmoscow.helpers.GroupItem
 import io.github.dvegasa.travelhackmoscow.helpers.MyApplication
 import io.github.dvegasa.travelhackmoscow.helpers.info
 import io.github.dvegasa.travelhackmoscow.pojos.GroupFirestore
+import io.github.dvegasa.travelhackmoscow.screens.group_creation.GroupCreationActivity
 import io.github.dvegasa.travelhackmoscow.screens.main.MainActivity
 import kotlinx.android.synthetic.main.fragment_groups.view.*
 
@@ -31,54 +33,18 @@ class GroupsFragment : Fragment() {
         host = activity as MainActivity
         root.rvGroups.adapter = rvAdapter
         root.rvGroups.layoutManager = LinearLayoutManager(root.rvGroups.context)
+        root.ivCreate.setOnClickListener {
+            startActivity(Intent(root.context, GroupCreationActivity::class.java))
+        }
         loadData()
         return root
     }
 
     private fun loadData() {
-
         info("Start loading")
-        initFirestore()
-
-//        val groups = ArrayList<GroupItem>()
-//        groups.add(
-//            GroupInviteData(
-//                1,
-//                "Поездка в Москву",
-//                "Где-то в феврале отправимся в путь!",
-//                "DVegasa",
-//                "http://none.com/"
-//            )
-//        )
-//
-//        groups.add(
-//            GroupInviteData(
-//                2,
-//                "На ВДНХ!",
-//                "Ведь там красиво",
-//                "Никита Штанько",
-//                "http://none.com/"
-//            )
-//        )
-//
-//        groups.add(
-//            GroupNormalData(
-//                3,
-//                "Февраль. Волгоград!",
-//                "А почему бы и не?",
-//                "Через два месяца",
-//                listOf()
-//            )
-//        )
-
-        // rvAdapter.update(groups)
-    }
-
-    private fun initFirestore() {
         val db = FirebaseFirestore.getInstance()
         var list = ArrayList<GroupFirestore>()
-        db
-            .collection("lobbys")
+        db.collection("lobbys")
             //.whereIn("users", listOf(MyApplication.username, MyApplication.username + "#"))
             .get()
             .addOnSuccessListener { result ->
@@ -96,5 +62,6 @@ class GroupsFragment : Fragment() {
                 rvAdapter.update(converted)
             }
     }
+
 
 }
