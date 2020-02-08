@@ -12,15 +12,17 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".screens.main.MainActivity"></activity>
-        <activity android:name=".screens.quiz_asking.QuizAskingActivity" />
-        <activity android:name=".screens.quiz_start.QuizStartActivity" />
-        <activity android:name=".screens.welcome.WelcomeActivity">
+        <activity android:name=".screens.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".screens.quiz_asking.QuizAskingActivity" />
+        <activity android:name=".screens.quiz_start.QuizStartActivity" />
+        <activity android:name=".screens.welcome.WelcomeActivity">
+
         </activity>
     </application>
 
