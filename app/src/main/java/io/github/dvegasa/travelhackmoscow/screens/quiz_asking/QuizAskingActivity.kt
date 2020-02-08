@@ -40,13 +40,14 @@ class QuizAskingActivity : AppCompatActivity() {
         quizes.add(
             ImgQuizData(
                 2,
-                "Выбери картинки",
+                "Нажми на картинки в том порядке, в каком они тебе нравятся",
                 listOf(
                     "https://picsum.photos/id/${(1..200).random()}/200/200",
                     "https://picsum.photos/id/${(1..200).random()}/200/200",
                     "https://picsum.photos/id/${(1..200).random()}/200/200",
                     "https://picsum.photos/id/${(1..200).random()}/200/200"
-                )
+                ),
+                listOf(1, 2, 3, 4)
             )
         )
         nextQuestion()
@@ -63,11 +64,13 @@ class QuizAskingActivity : AppCompatActivity() {
         tvQuestionsLeft.text = "Вопрос ${currentQuestion + 1} из ${quizes.size}"
 
         supportFragmentManager.beginTransaction().apply {
-            replace(flQuiz.id, when (quizes[currentQuestion]) {
-                is ImgQuizData -> ImgQuizFragment()
-                is SlideQuizData -> SlideQuizFragment()
-                else -> throw Exception("Bad QuizData")
-            })
+            replace(
+                flQuiz.id, when (quizes[currentQuestion]) {
+                    is ImgQuizData -> ImgQuizFragment()
+                    is SlideQuizData -> SlideQuizFragment()
+                    else -> throw Exception("Bad QuizData")
+                }
+            )
             commit()
         }
     }

@@ -1,6 +1,7 @@
 package io.github.dvegasa.travelhackmoscow.screens.quiz_asking.quiz_fragments
 
 import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,12 +15,16 @@ import io.github.dvegasa.travelhackmoscow.R
 import io.github.dvegasa.travelhackmoscow.helpers.ImageHelper
 import io.github.dvegasa.travelhackmoscow.pojos.ImgQuizData
 import io.github.dvegasa.travelhackmoscow.screens.quiz_asking.QuizAskingActivity
+import kotlinx.android.synthetic.main.black.view.*
 import kotlinx.android.synthetic.main.fragment_img_quiz.view.*
 
 class ImgQuizFragment : Fragment() {
     lateinit var root: View
     lateinit var host: QuizAskingActivity
     lateinit var quizData: ImgQuizData
+
+    var state = 1
+    val pickedIds = ArrayList<Long>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +40,30 @@ class ImgQuizFragment : Fragment() {
 
     fun bindViews() {
         root.tvTitle.text = quizData.title
+
+        root.apply {
+            iv1.setOnClickListener {
+                val v = LayoutInflater.from(this@ImgQuizFragment.host.baseContext)
+                    .inflate(R.layout.black, iv1)
+                v.tvNumber.text = state++.toString()
+            }
+            iv2.setOnClickListener {
+                val v = LayoutInflater.from(this@ImgQuizFragment.host.baseContext)
+                    .inflate(R.layout.black, iv2)
+                v.tvNumber.text = state++.toString()
+            }
+            iv3.setOnClickListener {
+                val v = LayoutInflater.from(this@ImgQuizFragment.host.baseContext)
+                    .inflate(R.layout.black, iv3)
+                v.tvNumber.text = state++.toString()
+            }
+            iv4.setOnClickListener {
+                val v = LayoutInflater.from(this@ImgQuizFragment.host.baseContext)
+                    .inflate(R.layout.black, iv4)
+                v.tvNumber.text = state++.toString()
+            }
+
+        }
     }
 
     fun getQuizData() {
@@ -57,13 +86,13 @@ class ImgQuizFragment : Fragment() {
                         if (images.size >= 4) {
 
                             images.forEachIndexed { i, bitmap ->
-                                images[i] = ImageHelper.getRoundedCornerBitmap(bitmap, 30)
+                                images[i] = ImageHelper.getRoundedCornerBitmap(bitmap, 50)
                             }
 
-                            root.iv1.setImageBitmap(images[0])
-                            root.iv2.setImageBitmap(images[1])
-                            root.iv3.setImageBitmap(images[2])
-                            root.iv4.setImageBitmap(images[3])
+                            root.iv1.background = BitmapDrawable(resources, images[0])
+                            root.iv2.background = BitmapDrawable(resources, images[1])
+                            root.iv3.background = BitmapDrawable(resources, images[2])
+                            root.iv4.background = BitmapDrawable(resources, images[3])
                         }
                     }
                 })

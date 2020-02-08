@@ -8,5 +8,6 @@ import io.github.dvegasa.travelhackmoscow.helpers.FirstQuiz
 data class ImgQuizData (
     val quizId: Long,
     val title: String,
-    val urls: List<String>
+    val urls: List<String>,
+    val imgIds: List<Long>
 ) : FirstQuiz
