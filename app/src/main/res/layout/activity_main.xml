@@ -4,12 +4,66 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".screens.main.MainActivity">
+        tools:context=".screens.main.MainActivity"
+        android:background="@color/colorBackground">
 
-    <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
-
-            android:id="@+id/bottomnav"
+    <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="12dp"
+            android:layout_marginBottom="44dp"
+            android:background="@drawable/elevation_gradient"
+            android:id="@+id/flBottomnavShadow"
             android:layout_gravity="bottom"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_gravity="bottom"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:weightSum="4"
+            android:elevation="4dp"
+            android:orientation="horizontal"
+            android:background="#fff">
+
+        <ImageView
+                android:id="@+id/bnavDiscover"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_discover"
+                android:layout_gravity="center"/>
+
+        <ImageView
+                android:id="@+id/bnavGroups"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_group"
+                android:layout_gravity="center"/>
+
+        <ImageView
+                android:id="@+id/bnavMap"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_map"
+                android:layout_gravity="center"/>
+
+        <ImageView
+                android:id="@+id/bnavHelp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_help"
+                android:layout_gravity="center"/>
+    </LinearLayout>
 </FrameLayout>

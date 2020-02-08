@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#F2694F</color>
     <color name="colorAccentPressed">#CA563F</color>
+
+    <color name="colorBottomnavInactive">#272727</color>
+
+    <color name="colorBackground">#EFF3FC</color>
 </resources>
