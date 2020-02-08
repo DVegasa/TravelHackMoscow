@@ -7,3 +7,4 @@ package io.github.dvegasa.travelhackmoscow.helpers
 interface FirstQuiz
 interface SecondQuiz
 interface QuizAnswer
+interface GroupItem
