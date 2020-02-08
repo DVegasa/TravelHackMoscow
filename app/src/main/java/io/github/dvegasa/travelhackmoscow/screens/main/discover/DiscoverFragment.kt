@@ -1,12 +1,15 @@
 package io.github.dvegasa.travelhackmoscow.screens.main.discover
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import io.github.dvegasa.travelhackmoscow.R
+import io.github.dvegasa.travelhackmoscow.helpers.ImageHelper
 import io.github.dvegasa.travelhackmoscow.screens.main.MainActivity
+import kotlinx.android.synthetic.main.fragment_discover.view.*
 
 class DiscoverFragment : Fragment() {
 
@@ -19,11 +22,11 @@ class DiscoverFragment : Fragment() {
     ): View? {
         root = inflater.inflate(R.layout.fragment_discover, container, false)
         host = activity as MainActivity
-        bindViews()
+        showCards()
         return root
     }
 
-    fun bindViews() {
+    fun showCards() {
 
     }
 }

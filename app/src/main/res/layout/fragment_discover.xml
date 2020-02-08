@@ -4,59 +4,225 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".screens.main.discover.DiscoverFragment"
-        android:background="@drawable/bg_main_gradient">
+        android:background="@color/colorBackground"
+        tools:context=".screens.main.discover.DiscoverFragment">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/circleImageView"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_margin="12dp"
-            android:elevation="2dp"
-            android:src="@drawable/ava_1"
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTop"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="#fff"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circleImageView"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_margin="12dp"
+                android:elevation="2dp"
+                android:src="@drawable/ava_1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:fontFamily="@font/mont_medi"
+                android:text="Привет,"
+                android:textColor="#999999"
+                android:textSize="13sp"
+                app:layout_constraintStart_toEndOf="@+id/circleImageView"
+                app:layout_constraintTop_toTopOf="@+id/circleImageView" />
+
+        <TextView
+                android:id="@+id/tvMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mont_bold"
+                android:text="100"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
+                app:layout_constraintLeft_toLeftOf="@id/textView" />
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:src="@drawable/ic_koshelek"
+                app:layout_constraintBottom_toBottomOf="@id/tvMoney"
+                app:layout_constraintLeft_toRightOf="@id/tvMoney"
+                app:layout_constraintTop_toTopOf="@id/tvMoney" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mont_bold"
+                android:text="Виктор Цой"
+                android:textColor="#000"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvMoney"
+                app:layout_constraintStart_toStartOf="@+id/textView" />
+
+
+        <FrameLayout
+                android:id="@+id/flLevelScale"
+                android:layout_width="0dp"
+                android:layout_height="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/bg_level"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/circleImageView">
+
+            <FrameLayout
+                    android:layout_width="42dp"
+                    android:layout_height="12dp"
+                    android:background="@drawable/bg_level_mark" />
+
+        </FrameLayout>
+
+        <TextView
+                android:id="@+id/tvLevelTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/mont_bold"
+                android:text="Уровень 1"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/flLevelScale" />
+
+        <TextView
+                android:id="@+id/tvLevelSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mont_medi"
+                android:paddingBottom="12dp"
+                android:text="До следующего уровня 500 пасскоинов"
+                android:textColor="#9A9A9A"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvLevelTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvLevelTitle" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/elevation_gradient_top"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clTop" />
 
     <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tvCityTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/mont_semib"
+            android:text="Москва,"
+            android:textColor="#393939"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clTop" />
+
+    <TextView
+            android:id="@+id/tvCitySubtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
             android:fontFamily="@font/mont_medi"
-            android:text="Привет,"
-            android:textColor="#999999"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/circleImageView"
-            app:layout_constraintTop_toTopOf="@+id/circleImageView" />
+            android:text="места, которые вам понравятся"
+            android:textColor="#828282"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCityTitle" />
 
-    <TextView
-            android:id="@+id/tvMoney"
-            android:layout_width="wrap_content"
+    <HorizontalScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="100"
-            app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
-            app:layout_constraintLeft_toLeftOf="@id/textView"
-            android:textColor="@color/colorAccent"
-            android:fontFamily="@font/mont_bold"/>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCitySubtitle">
 
-    <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_koshelek"
-            app:layout_constraintLeft_toRightOf="@id/tvMoney"
-            app:layout_constraintTop_toTopOf="@id/tvMoney"
-            app:layout_constraintBottom_toBottomOf="@id/tvMoney"
-            android:layout_marginLeft="4dp"/>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/tvMoney"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            android:text="Виктор Цой"
-            android:fontFamily="@font/mont_bold"
-            android:textColor="#000"
-            android:textSize="20sp"/>
+            <androidx.cardview.widget.CardView
+                    android:layout_width="118dp"
+                    android:layout_height="175dp"
+                    android:background="#fff"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="24dp">
 
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/card_moscow" />
 
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Кремль"
+                        android:textColor="#fff"
+                        android:fontFamily="@font/mont_semib"
+                        android:layout_gravity="bottom"
+                        android:layout_margin="14dp"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="118dp"
+                    android:layout_height="175dp"
+                    android:background="#fff"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="24dp">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/card_moscow" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="118dp"
+                    android:layout_height="175dp"
+                    android:background="#fff"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="24dp">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/card_moscow" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="118dp"
+                    android:layout_height="175dp"
+                    android:background="#fff"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="24dp">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/card_moscow" />
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    </HorizontalScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
