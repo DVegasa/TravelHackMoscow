@@ -6,7 +6,7 @@
         android:orientation="vertical"
         android:background="@drawable/bg_button_"
         android:id="@+id/root"
-        android:layout_marginBottom="8dp">
+        android:layout_margin="8dp">
 
     <TextView
             android:id="@+id/tvStatus"
@@ -16,22 +16,22 @@
             android:layout_marginLeft="12dp"
             android:layout_marginTop="12dp"
             android:layout_marginRight="12dp"
-            android:textColor="#828282"
             android:drawablePadding="8dp"
             android:fontFamily="@font/mont_semib"
             android:textSize="11sp"
-            tools:text="Через два месяца" />
+            android:textColor="#828282"
+            android:text="Через два месяца" />
 
     <TextView
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="2dp"
             android:layout_marginRight="12dp"
             android:fontFamily="@font/mont_semib"
             android:textColor="#000"
-            android:textSize="20sp"
+            android:textSize="16sp"
             tools:text="Привет, мир!" />
 
     <TextView
@@ -39,31 +39,54 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
-            android:layout_marginTop="8dp"
             android:layout_marginRight="12dp"
             android:fontFamily="@font/mont_medi"
             android:textColor="#828282"
-            android:textSize="16sp"
+            android:textSize="14sp"
             tools:text="Привет, мир!" />
 
     <LinearLayout
-            android:id="@+id/llUsers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:orientation="horizontal"
-            android:layout_marginBottom="12dp">
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
-                android:visibility="invisible"
-                android:id="@+id/ivInviter"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:id="@+id/ivUser1"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="12dp"
                 android:src="@drawable/ava_3" />
 
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivUser2"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="12dp"
+                android:src="@drawable/ava_2" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivUser3"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="12dp"
+                android:src="@drawable/ava_1" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivUser4"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="12dp"
+                android:src="@drawable/ava_4" />
+
     </LinearLayout>
+
 
 
 </LinearLayout>
