@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".screens.quiz_asking.quiz_fragments.SlideQuizFragment"
+        android:orientation="vertical">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_root_quiz_slider"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+    <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            tools:text="Насколько сильно ты любишь музеи?"
+            android:textColor="#fff"
+            android:textSize="24sp"
+            android:fontFamily="@font/mont_bold"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"/>
+
+        <TextView
+                android:id="@+id/tvCloud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Нормально"
+                android:background="@drawable/bg_cloud"
+                android:paddingRight="24dp"
+                android:paddingLeft="24dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/mont_medi"
+                android:textColor="#000" />
+
+        <SeekBar
+                android:id="@+id/seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="12dp"
+                android:max="1000"
+                android:progress="50"
+                android:scrollbarSize="54sp"/>
+
+        <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                tools:text="Можно сходить, но я не фанат"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:fontFamily="@font/mont_medi"
+                android:textSize="18sp"
+                android:paddingRight="50dp"
+                android:paddingLeft="50dp"
+                android:gravity="center"/>
+
+    </LinearLayout>
+   <Button
+           android:id="@+id/btnNext"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Дальше"
+           android:padding="12dp"
+           android:background="@drawable/bg_btn_quiz_slider"
+           android:fontFamily="@font/mont_bold"
+           android:textAllCaps="false"
+           android:textColor="#fff"
+           android:textSize="18sp"/>
+
+</LinearLayout>
