@@ -6,15 +6,22 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import io.github.dvegasa.travelhackmoscow.R
 import io.github.dvegasa.travelhackmoscow.screens.main.discover.DiscoverFragment
+import io.github.dvegasa.travelhackmoscow.screens.main.groups.GroupsFragment
+import io.github.dvegasa.travelhackmoscow.screens.main.help.HelpFragment
+import io.github.dvegasa.travelhackmoscow.screens.main.map.MapFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     var currentScreen = 0
 
-    val discover = DiscoverFragment()
+    val discoverF = DiscoverFragment()
+    val groupsF = GroupsFragment()
+    val mapF = MapFragment()
+    val helpF =
+        HelpFragment()
 
-    val listFragment = listOf(DiscoverFragment(), DiscoverFragment(), DiscoverFragment(), DiscoverFragment())
+    val listFragment = listOf(discoverF, groupsF, mapF, helpF)
 
     val nsvpAdapter = NsvpAdapter(supportFragmentManager, listFragment)
 
