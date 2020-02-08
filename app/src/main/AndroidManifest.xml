@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+            android:screenOrientation="portrait"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
@@ -19,7 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".screens.quiz_asking.QuizAskingActivity" />
+        <activity android:name=".screens.quiz_asking.QuizAskingActivity">
+        </activity>
         <activity android:name=".screens.quiz_start.QuizStartActivity" />
         <activity android:name=".screens.welcome.WelcomeActivity">
 
