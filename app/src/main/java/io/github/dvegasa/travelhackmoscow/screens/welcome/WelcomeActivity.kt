@@ -61,6 +61,8 @@ class WelcomeActivity : AppCompatActivity() {
         }
 
         clCredentials.visibility = View.VISIBLE
+
+        etLogin.setText(listOf("DVegasa", "admin", "qwe", "nikita").random())
     }
 
     private fun doLogin() {
