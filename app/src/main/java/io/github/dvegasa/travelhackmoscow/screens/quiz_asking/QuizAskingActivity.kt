@@ -7,7 +7,9 @@ import io.github.dvegasa.travelhackmoscow.helpers.FirstQuiz
 import io.github.dvegasa.travelhackmoscow.helpers.QuizAnswer
 import io.github.dvegasa.travelhackmoscow.helpers.fullscreen
 import io.github.dvegasa.travelhackmoscow.helpers.info
+import io.github.dvegasa.travelhackmoscow.pojos.ImgQuizData
 import io.github.dvegasa.travelhackmoscow.pojos.SlideQuizData
+import io.github.dvegasa.travelhackmoscow.screens.quiz_asking.quiz_fragments.ImgQuizFragment
 import io.github.dvegasa.travelhackmoscow.screens.quiz_asking.quiz_fragments.SlideQuizFragment
 import kotlinx.android.synthetic.main.activity_quiz_asking.*
 
@@ -36,19 +38,15 @@ class QuizAskingActivity : AppCompatActivity() {
             )
         )
         quizes.add(
-            SlideQuizData(
-                1,
-                "Насколько сильно ты любишь театры?",
-                listOf("Слабо", "Нормально", "Обожаю"),
-                listOf("Не моё. Не хочу", "Сойдёт. Почему бы и нет?", "АААА БОЖЕЧКИ МУР ^_^")
-            )
-        )
-        quizes.add(
-            SlideQuizData(
+            ImgQuizData(
                 2,
-                "А своего сенпая ты любишь?",
-                listOf("Слабо", "Нормально", "Обожаю"),
-                listOf("Не моё. Не хочу", "Сойдёт. Почему бы и нет?", "АААА БОЖЕЧКИ МУР ^_^")
+                "Выбери картинки",
+                listOf(
+                    "https://picsum.photos/id/${(1..200).random()}/200/200",
+                    "https://picsum.photos/id/${(1..200).random()}/200/200",
+                    "https://picsum.photos/id/${(1..200).random()}/200/200",
+                    "https://picsum.photos/id/${(1..200).random()}/200/200"
+                )
             )
         )
         nextQuestion()
@@ -64,15 +62,16 @@ class QuizAskingActivity : AppCompatActivity() {
 
         tvQuestionsLeft.text = "Вопрос ${currentQuestion + 1} из ${quizes.size}"
 
-        when (quizes[currentQuestion]) {
-            is SlideQuizData -> {
-                supportFragmentManager.beginTransaction().apply {
-                    replace(flQuiz.id, SlideQuizFragment())
-                    commit()
-                }
-            }
+        supportFragmentManager.beginTransaction().apply {
+            replace(flQuiz.id, when (quizes[currentQuestion]) {
+                is ImgQuizData -> ImgQuizFragment()
+                is SlideQuizData -> SlideQuizFragment()
+                else -> throw Exception("Bad QuizData")
+            })
+            commit()
         }
     }
+
 
     fun addAnswer(answer: QuizAnswer) {
         answers.add(answer)
