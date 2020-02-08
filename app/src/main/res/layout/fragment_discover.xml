@@ -151,7 +151,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvCitySubtitle">
+            app:layout_constraintTop_toBottomOf="@id/tvCitySubtitle"
+            android:scrollbars="none">
 
         <LinearLayout
                 android:layout_width="wrap_content"
@@ -163,7 +164,8 @@
                     android:layout_height="175dp"
                     android:background="#fff"
                     android:layout_margin="8dp"
-                    app:cardCornerRadius="24dp">
+                    app:cardCornerRadius="24dp"
+                    android:elevation="2dp">
 
                 <ImageView
                         android:layout_width="wrap_content"
@@ -186,12 +188,22 @@
                     android:layout_height="175dp"
                     android:background="#fff"
                     android:layout_margin="8dp"
-                    app:cardCornerRadius="24dp">
+                    app:cardCornerRadius="24dp"
+                    android:elevation="2dp">
 
                 <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/card_moscow" />
+                        android:src="@drawable/card_anicent" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Древний театр"
+                        android:textColor="#fff"
+                        android:fontFamily="@font/mont_semib"
+                        android:layout_gravity="bottom"
+                        android:layout_margin="14dp"/>
 
             </androidx.cardview.widget.CardView>
 
@@ -200,12 +212,22 @@
                     android:layout_height="175dp"
                     android:background="#fff"
                     android:layout_margin="8dp"
-                    app:cardCornerRadius="24dp">
+                    app:cardCornerRadius="24dp"
+                    android:elevation="2dp">
 
                 <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/card_moscow" />
+                        android:src="@drawable/card_cafe" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ресторан у Павлина"
+                        android:textColor="#fff"
+                        android:fontFamily="@font/mont_semib"
+                        android:layout_gravity="bottom"
+                        android:layout_margin="14dp"/>
 
             </androidx.cardview.widget.CardView>
 
@@ -214,12 +236,22 @@
                     android:layout_height="175dp"
                     android:background="#fff"
                     android:layout_margin="8dp"
-                    app:cardCornerRadius="24dp">
+                    app:cardCornerRadius="24dp"
+                    android:elevation="2dp">
 
                 <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/card_moscow" />
+                        android:src="@drawable/card_night" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ночная прогулка"
+                        android:textColor="#fff"
+                        android:fontFamily="@font/mont_semib"
+                        android:layout_gravity="bottom"
+                        android:layout_margin="14dp"/>
 
             </androidx.cardview.widget.CardView>
         </LinearLayout>
