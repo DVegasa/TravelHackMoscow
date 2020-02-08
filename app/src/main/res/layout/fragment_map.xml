@@ -5,13 +5,19 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg_main_gradient">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Map"
-            android:textSize="20sp"
-            android:textColor="#000"
+            android:src="@drawable/map_stub"
+            android:scaleType="fitXY"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Скоро"
+            android:textColor="#fff"
+            android:textSize="28sp"
+            android:layout_gravity="center"
             android:fontFamily="@font/mont_bold"/>
 
 </FrameLayout>

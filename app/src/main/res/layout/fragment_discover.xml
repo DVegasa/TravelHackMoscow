@@ -1,18 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".screens.main.discover.DiscoverFragment"
         android:background="@drawable/bg_main_gradient">
 
-    <!-- TODO: Update blank fragment layout -->
+    <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageView"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_margin="12dp"
+            android:elevation="2dp"
+            android:src="@drawable/ava_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Discover"
-            android:textSize="20sp"
-            android:textColor="#000"
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:fontFamily="@font/mont_medi"
+            android:text="Привет,"
+            android:textColor="#999999"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/circleImageView"
+            app:layout_constraintTop_toTopOf="@+id/circleImageView" />
+
+    <TextView
+            android:id="@+id/tvMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100"
+            app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
+            app:layout_constraintLeft_toLeftOf="@id/textView"
+            android:textColor="@color/colorAccent"
             android:fontFamily="@font/mont_bold"/>
 
-</FrameLayout>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_koshelek"
+            app:layout_constraintLeft_toRightOf="@id/tvMoney"
+            app:layout_constraintTop_toTopOf="@id/tvMoney"
+            app:layout_constraintBottom_toBottomOf="@id/tvMoney"
+            android:layout_marginLeft="4dp"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/tvMoney"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            android:text="Виктор Цой"
+            android:fontFamily="@font/mont_bold"
+            android:textColor="#000"
+            android:textSize="20sp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
