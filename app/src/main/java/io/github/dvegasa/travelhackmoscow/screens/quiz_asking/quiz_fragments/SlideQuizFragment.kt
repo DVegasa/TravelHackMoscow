@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.fragment.app.Fragment
 import io.github.dvegasa.travelhackmoscow.R
+import io.github.dvegasa.travelhackmoscow.pojos.SlideQuizAnswer
 import io.github.dvegasa.travelhackmoscow.pojos.SlideQuizData
 import io.github.dvegasa.travelhackmoscow.screens.quiz_asking.QuizAskingActivity
+import kotlinx.android.synthetic.main.fragment_slide_quiz.*
 import kotlinx.android.synthetic.main.fragment_slide_quiz.view.*
 
 
@@ -16,6 +18,7 @@ class SlideQuizFragment : Fragment() {
 
     lateinit var root: View
     lateinit var quizData: SlideQuizData
+    lateinit var host: QuizAskingActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +29,7 @@ class SlideQuizFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         root = inflater.inflate(R.layout.fragment_slide_quiz, container, false)
+        host = (activity as QuizAskingActivity)
 
         getQuizData()
         bindViews()
@@ -35,7 +39,6 @@ class SlideQuizFragment : Fragment() {
     }
 
     private fun getQuizData() {
-        val host = (activity as QuizAskingActivity)
         quizData = host.quizes[host.currentQuestion] as SlideQuizData
     }
 
@@ -50,6 +53,10 @@ class SlideQuizFragment : Fragment() {
         })
 
         root.tvTitle.text = quizData.title
+        root.btnNext.setOnClickListener {
+            host.addAnswer(SlideQuizAnswer(quizData.quizId, seekbar.progress / 100))
+            host.nextQuestion()
+        }
     }
 
     private fun updateUi(p: Int) {
