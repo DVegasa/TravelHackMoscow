@@ -6,7 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import io.github.dvegasa.travelhackmoscow.R
 import io.github.dvegasa.travelhackmoscow.helpers.fullscreen
-import io.github.dvegasa.travelhackmoscow.screens.quiz.QuizActivity
+import io.github.dvegasa.travelhackmoscow.screens.quiz_start.QuizStartActivity
 import kotlinx.android.synthetic.main.activity_welcome.*
 
 
@@ -72,6 +72,6 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     private fun nextScreen() {
-        startActivity(Intent(this, QuizActivity::class.java))
+        startActivity(Intent(this, QuizStartActivity::class.java))
     }
 }

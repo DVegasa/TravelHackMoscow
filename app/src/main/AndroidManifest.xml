@@ -12,7 +12,8 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".screens.quiz.QuizActivity"></activity>
+        <activity android:name=".screens.quiz_asking.QuizAskingActivity"></activity>
+        <activity android:name=".screens.quiz_start.QuizStartActivity" />
         <activity android:name=".screens.welcome.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
