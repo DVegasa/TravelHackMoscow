@@ -1,6 +1,7 @@
 package io.github.dvegasa.travelhackmoscow.network
 
 import io.github.dvegasa.travelhackmoscow.network.requests.AuthRequest
+import io.github.dvegasa.travelhackmoscow.network.requests.Quiz1Request
 import io.github.dvegasa.travelhackmoscow.network.requests.Quiz2Request
 import io.github.dvegasa.travelhackmoscow.network.responses.Poizz
 import retrofit2.Call
@@ -16,4 +17,7 @@ interface BackendAPI {
 
     @POST("/rating/predict/")
     fun sendSecondQuiz(@Body quiz: Quiz2Request): Call<Poizz>
+
+    @POST("/rating/set")
+    fun sendFirstQuiz(@Body quiz: Quiz1Request): Call<Void>
 }

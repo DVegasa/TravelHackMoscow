@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
+import io.github.dvegasa.travelhackmoscow.R
 
 /**
  * Created by Ed Khalturin @DVegasa
@@ -39,3 +40,14 @@ fun Activity.fullscreen() {
         statusBarColor = Color.TRANSPARENT
     }
 }
+
+fun getRandomAva(): Int = listOf(
+    R.drawable.ava_1,
+    R.drawable.ava_2,
+    R.drawable.ava_3,
+    R.drawable.ava_4,
+    R.drawable.ava_5,
+    R.drawable.ava_6,
+    R.drawable.ava_7,
+    R.drawable.ava_8
+    ).random()

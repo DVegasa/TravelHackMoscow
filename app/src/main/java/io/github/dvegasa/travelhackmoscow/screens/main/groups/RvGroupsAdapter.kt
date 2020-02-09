@@ -7,11 +7,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import io.github.dvegasa.travelhackmoscow.R
+import io.github.dvegasa.travelhackmoscow.helpers.getRandomAva
 import io.github.dvegasa.travelhackmoscow.pojos.GroupFirestore
 import io.github.dvegasa.travelhackmoscow.pojos.GroupInviteData
 import io.github.dvegasa.travelhackmoscow.pojos.GroupNormalData
 import io.github.dvegasa.travelhackmoscow.screens.group_info.GroupInfoActivity
 import kotlinx.android.synthetic.main.item_group_invite.view.*
+import kotlinx.android.synthetic.main.item_group_invite.view.tvDescription
+import kotlinx.android.synthetic.main.item_group_invite.view.tvStatus
+import kotlinx.android.synthetic.main.item_group_invite.view.tvTitle
+import kotlinx.android.synthetic.main.item_group_waiting.view.*
+import kotlinx.android.synthetic.main.user_avatars.view.*
 
 /**
  * Created by Ed Khalturin @DVegasa
@@ -19,7 +25,8 @@ import kotlinx.android.synthetic.main.item_group_invite.view.*
 const val INVITE = 0
 const val NORMAL = 1
 
-class RvGroupsAdapter(private var list: List<GroupFirestore>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RvGroupsAdapter(private var list: List<GroupFirestore>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     fun update(list: List<GroupFirestore>) {
         this.list = list
@@ -44,6 +51,13 @@ class RvGroupsAdapter(private var list: List<GroupFirestore>) : RecyclerView.Ada
                 tvTitle.text = group.title
                 tvDescription.text = group.description
                 tvStatus.text = "Предстоящая поездка"
+
+                for (i in 0..list[pos].users.size) {
+                    val v = View.inflate(itemView.context, R.layout.user_avatars, llAvas)
+                    v.civ.setImageResource(getRandomAva())
+                }
+
+
                 setOnClickListener {
                     if (list[pos].toPojo() is GroupNormalData) {
                         val intent = Intent(itemView.context, GroupInfoActivity::class.java)

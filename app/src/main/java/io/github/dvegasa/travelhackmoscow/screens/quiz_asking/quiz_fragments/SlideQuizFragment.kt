@@ -60,7 +60,7 @@ class SlideQuizFragment : Fragment() {
     }
 
     private fun updateUi(p: Int) {
-        val progress = p / 100
+        val progress = p
         root.apply {
             val state = when (progress) {
                 in 0..3 -> 0

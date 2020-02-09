@@ -46,44 +46,12 @@
             tools:text="Привет, мир!" />
 
     <LinearLayout
+            android:id="@+id/llAvas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
+            android:layout_margin="12dp"
             android:orientation="horizontal">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/ivUser1"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="12dp"
-                android:src="@drawable/ava_3" />
-
-
-        <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/ivUser2"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="12dp"
-                android:src="@drawable/ava_2" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/ivUser3"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="12dp"
-                android:src="@drawable/ava_1" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/ivUser4"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="12dp"
-                android:src="@drawable/ava_4" />
 
     </LinearLayout>
 
