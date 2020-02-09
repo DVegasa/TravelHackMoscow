@@ -36,8 +36,14 @@ class GroupsFragment : Fragment() {
         root.ivCreate.setOnClickListener {
             startActivity(Intent(root.context, GroupCreationActivity::class.java))
         }
-        loadData()
+        // loadData()
+        subscribeToData()
         return root
+    }
+
+    private fun subscribeToData() {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("lobbys")
     }
 
     private fun loadData() {
