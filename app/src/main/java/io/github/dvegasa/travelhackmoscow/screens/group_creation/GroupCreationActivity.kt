@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import io.github.dvegasa.travelhackmoscow.R
 import io.github.dvegasa.travelhackmoscow.helpers.MyApplication
+import io.github.dvegasa.travelhackmoscow.helpers.info
 import io.github.dvegasa.travelhackmoscow.network.RetrofitGenerator
 import io.github.dvegasa.travelhackmoscow.network.requests.Quiz2Request
 import io.github.dvegasa.travelhackmoscow.network.responses.Poizz
@@ -69,10 +70,6 @@ class GroupCreationActivity : AppCompatActivity() {
 
     private fun createGroup() {
         startActivityForResult(Intent(this, SequActivity::class.java), 42)
-
-    }
-
-    private fun sendQuiz() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -80,7 +77,10 @@ class GroupCreationActivity : AppCompatActivity() {
         val group = GroupFirestore(etTitle.text.toString(), etDescription.text.toString(), invited)
         val db = FirebaseFirestore.getInstance()
 
-        val quiz2 = Quiz2Request(data!!.getIntExtra("days", 0), invited, data!!.getStringExtra("ban"))
+        val extra = intent.extras
+
+        val quiz2 = Quiz2Request(extra?.getInt("days") ?: 21, invited, extra?.getString("ban") ?: "meow")
+        info(quiz2)
         RetrofitGenerator.retrofitClient.sendSecondQuiz(quiz2).enqueue(object :
             Callback<Poizz> {
             override fun onFailure(call: Call<Poizz>, t: Throwable) {
@@ -88,8 +88,8 @@ class GroupCreationActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<Poizz>, response: Response<Poizz>) {
                 group.poizzes = response.body()
+                info(response.body())
                 db.collection("lobbys").add(group).addOnSuccessListener {
-                    sendQuiz()
                     finish()
                 }
             }
