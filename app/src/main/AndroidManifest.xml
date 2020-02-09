@@ -14,7 +14,8 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".screens.sequacfore.SequActivity"></activity>
+        <activity android:name=".screens.group_info.GroupInfoActivity"></activity>
+        <activity android:name=".screens.sequacfore.SequActivity" />
         <activity android:name=".screens.group_creation.GroupCreationActivity" />
         <activity android:name=".screens.main.MainActivity" />
         <activity android:name=".screens.quiz_asking.QuizAskingActivity" />

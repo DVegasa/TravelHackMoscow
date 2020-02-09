@@ -1,5 +1,6 @@
 package io.github.dvegasa.travelhackmoscow.screens.group_creation
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +9,17 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import io.github.dvegasa.travelhackmoscow.R
 import io.github.dvegasa.travelhackmoscow.helpers.MyApplication
+import io.github.dvegasa.travelhackmoscow.network.RetrofitGenerator
+import io.github.dvegasa.travelhackmoscow.network.requests.Quiz2Request
+import io.github.dvegasa.travelhackmoscow.network.responses.Poizz
 import io.github.dvegasa.travelhackmoscow.pojos.GroupFirestore
+import io.github.dvegasa.travelhackmoscow.screens.sequacfore.SequActivity
 import kotlinx.android.synthetic.main.activity_group_creation.*
 import kotlinx.android.synthetic.main.dialog_add_user.view.*
 import kotlinx.android.synthetic.main.layout_invited.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class GroupCreationActivity : AppCompatActivity() {
 
@@ -60,10 +68,32 @@ class GroupCreationActivity : AppCompatActivity() {
     }
 
     private fun createGroup() {
+        startActivityForResult(Intent(this, SequActivity::class.java), 42)
+
+    }
+
+    private fun sendQuiz() {
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
         val group = GroupFirestore(etTitle.text.toString(), etDescription.text.toString(), invited)
         val db = FirebaseFirestore.getInstance()
-        db.collection("lobbys").add(group).addOnSuccessListener {
-            finish()
-        }
+
+        val quiz2 = Quiz2Request(data!!.getIntExtra("days", 0), invited, data!!.getStringExtra("ban"))
+        RetrofitGenerator.retrofitClient.sendSecondQuiz(quiz2).enqueue(object :
+            Callback<Poizz> {
+            override fun onFailure(call: Call<Poizz>, t: Throwable) {
+            }
+
+            override fun onResponse(call: Call<Poizz>, response: Response<Poizz>) {
+                group.poizzes = response.body()
+                db.collection("lobbys").add(group).addOnSuccessListener {
+                    sendQuiz()
+                    finish()
+                }
+            }
+        })
+        // 10.0.14.241:8000/rating/set
     }
 }

@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:text="Насколько сильно ты любишь музеи?"
+            tools:text="Насколько ДНИ ты любишь музеи?"
             android:textColor="#fff"
             android:textSize="24sp"
             android:fontFamily="@font/mont_bold"
@@ -32,7 +32,7 @@
                 android:id="@+id/tvCloud"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Нормально"
+                tools:text="7"
                 android:background="@drawable/bg_cloud"
                 android:paddingRight="24dp"
                 android:paddingLeft="24dp"
@@ -53,20 +53,8 @@
                 android:max="16"
                 android:progress="7"
                 android:scrollbarSize="54sp"
+                android:layout_marginBottom="24dp"
                 android:thumb="@drawable/bg_big_thumb"/>
-
-        <TextView
-                android:id="@+id/tvDescription"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                tools:text="Можно сходить, но я не фанат"
-                android:textAlignment="center"
-                android:textColor="#fff"
-                android:fontFamily="@font/mont_medi"
-                android:textSize="16sp"
-                android:paddingRight="50dp"
-                android:paddingLeft="50dp"
-                android:gravity="center"/>
 
     </LinearLayout>
    <Button

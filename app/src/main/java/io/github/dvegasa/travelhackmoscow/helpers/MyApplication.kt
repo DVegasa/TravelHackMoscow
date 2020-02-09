@@ -9,5 +9,7 @@ import android.app.Application
 class MyApplication : Application() {
     companion object Storage {
         var username: String = ""
+
+        var selectedGroup: GroupItem? = null
     }
 }

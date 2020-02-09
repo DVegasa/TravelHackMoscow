@@ -1,13 +1,16 @@
 package io.github.dvegasa.travelhackmoscow.screens.main.groups
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.github.dvegasa.travelhackmoscow.R
 import io.github.dvegasa.travelhackmoscow.helpers.GroupItem
+import io.github.dvegasa.travelhackmoscow.helpers.MyApplication
 import io.github.dvegasa.travelhackmoscow.pojos.GroupInviteData
 import io.github.dvegasa.travelhackmoscow.pojos.GroupNormalData
+import io.github.dvegasa.travelhackmoscow.screens.group_info.GroupInfoActivity
 import kotlinx.android.synthetic.main.item_group_invite.view.*
 
 /**
@@ -30,6 +33,8 @@ class RvGroupsAdapter(private var list: List<GroupItem>) : RecyclerView.Adapter<
                 tvTitle.text = group.title
                 tvDescription.text = group.description
                 tvInviter.text = group.inviterName
+
+
             }
         }
     }
@@ -41,6 +46,13 @@ class RvGroupsAdapter(private var list: List<GroupItem>) : RecyclerView.Adapter<
                 tvTitle.text = group.title
                 tvDescription.text = group.description
                 tvStatus.text = group.status
+                setOnClickListener {
+                    if (list[pos] is GroupNormalData) {
+                        MyApplication.selectedGroup = list[pos]
+                        val intent = Intent(itemView.context, GroupInfoActivity::class.java)
+                        itemView.context.startActivity(intent)
+                    }
+                }
             }
         }
     }
