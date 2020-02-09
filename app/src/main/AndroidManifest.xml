@@ -14,9 +14,10 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".screens.group_creation.GroupCreationActivity"></activity>
-        <activity android:name=".screens.main.MainActivity"></activity>
-        <activity android:name=".screens.quiz_asking.QuizAskingActivity"></activity>
+        <activity android:name=".screens.sequacfore.SequActivity"></activity>
+        <activity android:name=".screens.group_creation.GroupCreationActivity" />
+        <activity android:name=".screens.main.MainActivity" />
+        <activity android:name=".screens.quiz_asking.QuizAskingActivity" />
         <activity android:name=".screens.quiz_start.QuizStartActivity" />
         <activity android:name=".screens.welcome.WelcomeActivity">
             <intent-filter>

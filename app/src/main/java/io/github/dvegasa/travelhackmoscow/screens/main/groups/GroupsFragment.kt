@@ -44,6 +44,25 @@ class GroupsFragment : Fragment() {
     private fun subscribeToData() {
         val db = FirebaseFirestore.getInstance()
         db.collection("lobbys")
+            .addSnapshotListener {value, e ->
+                e?.printStackTrace()
+
+                val list = ArrayList<GroupFirestore>()
+                for (doc in value!!) {
+                    val obj = doc.toObject(GroupFirestore::class.java)
+                    list.add(obj)
+                }
+                list.sortByDescending { it.time }
+                info(list)
+                info(MyApplication.username)
+                var converted = ArrayList<GroupItem>()
+                for (l in list) {
+                    val a = l.toPojo(onlyMe = true) ?: continue
+                    converted.add(a)
+                }
+
+                rvAdapter.update(converted)
+            }
     }
 
     private fun loadData() {

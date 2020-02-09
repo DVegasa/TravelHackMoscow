@@ -9,7 +9,8 @@ import io.github.dvegasa.travelhackmoscow.helpers.MyApplication
 data class GroupFirestore(
     val title: String = "",
     val description: String = "",
-    val users: List<String> = listOf() // # на конце означает что для этого юзера это инвайт
+    val users: List<String> = listOf(), // # на конце означает что для этого юзера это инвайт
+    val time: Long = System.currentTimeMillis()
 ) {
     fun toPojo(onlyMe: Boolean = true): GroupItem? {
         if (("${MyApplication.username}#" !in users)
