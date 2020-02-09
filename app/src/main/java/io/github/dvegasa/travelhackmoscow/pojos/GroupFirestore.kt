@@ -23,13 +23,10 @@ data class GroupFirestore(
         return if ("${MyApplication.username}#" in users) GroupInviteData(
             title,
             description,
-            users[0].removeSuffix("#"),
-            "https://img1.freepng.ru/20180327/bze/kisspng-computer-icons-user-profile-avatar-profile-5ab9e3b0310cb6.2741651015221318882009.jpg"
+            users[0].removeSuffix("#")
         ) else GroupNormalData(
             title,
-            description,
-            "Предстоящая поездка",
-            ArrayList(users.size)
+            description
         )
     }
 }

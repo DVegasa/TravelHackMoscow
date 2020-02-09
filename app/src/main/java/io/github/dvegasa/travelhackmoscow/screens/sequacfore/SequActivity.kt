@@ -25,7 +25,7 @@ class SequActivity : AppCompatActivity() {
             val intent = Intent()
             intent.putExtra("ban", etBan.text.toString())
             intent.putExtra("days", days)
-            setResult(123, Intent().putExtra("ban", etBan.text.toString()))
+            setResult(123, intent)
             finish()
         }
     }

@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import io.github.dvegasa.travelhackmoscow.R
-import io.github.dvegasa.travelhackmoscow.helpers.GroupItem
-import io.github.dvegasa.travelhackmoscow.helpers.MyApplication
+import io.github.dvegasa.travelhackmoscow.pojos.GroupFirestore
 import io.github.dvegasa.travelhackmoscow.pojos.GroupInviteData
 import io.github.dvegasa.travelhackmoscow.pojos.GroupNormalData
 import io.github.dvegasa.travelhackmoscow.screens.group_info.GroupInfoActivity
@@ -19,9 +19,9 @@ import kotlinx.android.synthetic.main.item_group_invite.view.*
 const val INVITE = 0
 const val NORMAL = 1
 
-class RvGroupsAdapter(private var list: List<GroupItem>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RvGroupsAdapter(private var list: List<GroupFirestore>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    fun update(list: List<GroupItem>) {
+    fun update(list: List<GroupFirestore>) {
         this.list = list
         notifyDataSetChanged()
     }
@@ -29,12 +29,10 @@ class RvGroupsAdapter(private var list: List<GroupItem>) : RecyclerView.Adapter<
     inner class InviteVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(pos: Int) {
             itemView.apply {
-                val group = list[pos] as GroupInviteData
+                val group = list[pos].toPojo() as GroupInviteData
                 tvTitle.text = group.title
                 tvDescription.text = group.description
                 tvInviter.text = group.inviterName
-
-
             }
         }
     }
@@ -42,14 +40,15 @@ class RvGroupsAdapter(private var list: List<GroupItem>) : RecyclerView.Adapter<
     inner class NormalVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(pos: Int) {
             itemView.apply {
-                val group = list[pos] as GroupNormalData
+                val group = list[pos].toPojo() as GroupNormalData
                 tvTitle.text = group.title
                 tvDescription.text = group.description
-                tvStatus.text = group.status
+                tvStatus.text = "Предстоящая поездка"
                 setOnClickListener {
-                    if (list[pos] is GroupNormalData) {
-                        MyApplication.selectedGroup = list[pos]
+                    if (list[pos].toPojo() is GroupNormalData) {
                         val intent = Intent(itemView.context, GroupInfoActivity::class.java)
+                        val json = Gson().toJson(list[pos])
+                        intent.putExtra("group", json)
                         itemView.context.startActivity(intent)
                     }
                 }
@@ -58,7 +57,7 @@ class RvGroupsAdapter(private var list: List<GroupItem>) : RecyclerView.Adapter<
     }
 
     override fun getItemViewType(position: Int): Int {
-        if (list[position] is GroupInviteData) return INVITE
+        if (list[position].toPojo() is GroupInviteData) return INVITE
         return NORMAL
     }
 

@@ -8,6 +8,5 @@ import io.github.dvegasa.travelhackmoscow.helpers.GroupItem
 data class GroupInviteData (
     val title: String,
     val description: String,
-    val inviterName: String,
-    val inviterUrl: String
+    val inviterName: String
 ) : GroupItem

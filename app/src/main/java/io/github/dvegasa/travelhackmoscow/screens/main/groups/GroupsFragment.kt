@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import io.github.dvegasa.travelhackmoscow.R
-import io.github.dvegasa.travelhackmoscow.helpers.GroupItem
 import io.github.dvegasa.travelhackmoscow.helpers.MyApplication
 import io.github.dvegasa.travelhackmoscow.helpers.info
 import io.github.dvegasa.travelhackmoscow.pojos.GroupFirestore
@@ -47,46 +46,17 @@ class GroupsFragment : Fragment() {
             .addSnapshotListener {value, e ->
                 e?.printStackTrace()
 
-                val list = ArrayList<GroupFirestore>()
+                var list = ArrayList<GroupFirestore>()
                 for (doc in value!!) {
                     val obj = doc.toObject(GroupFirestore::class.java)
                     list.add(obj)
                 }
                 list.sortByDescending { it.time }
+                list = ArrayList(list.filter {MyApplication.Storage.username in it.users})
                 info(list)
                 info(MyApplication.username)
-                var converted = ArrayList<GroupItem>()
-                for (l in list) {
-                    val a = l.toPojo(onlyMe = true) ?: continue
-                    converted.add(a)
-                }
 
-                rvAdapter.update(converted)
+                rvAdapter.update(list)
             }
     }
-
-    private fun loadData() {
-        info("Start loading")
-        val db = FirebaseFirestore.getInstance()
-        var list = ArrayList<GroupFirestore>()
-        db.collection("lobbys")
-            //.whereIn("users", listOf(MyApplication.username, MyApplication.username + "#"))
-            .get()
-            .addOnSuccessListener { result ->
-                for (doc in result) {
-                    val obj = doc.toObject(GroupFirestore::class.java)
-                    list.add(obj)
-                }
-                info(list)
-                info(MyApplication.username)
-                val converted = ArrayList<GroupItem>()
-                for (l in list) {
-                    val a = l.toPojo(onlyMe = true) ?: continue
-                    converted.add(a)
-                }
-                rvAdapter.update(converted)
-            }
-    }
-
-
 }

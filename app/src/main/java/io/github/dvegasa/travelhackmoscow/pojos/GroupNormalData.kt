@@ -7,7 +7,5 @@ import io.github.dvegasa.travelhackmoscow.helpers.GroupItem
  */
 data class GroupNormalData (
     val title: String,
-    val description: String,
-    val status: String,
-    val userUrls: List<String>
+    val description: String
 ) : GroupItem

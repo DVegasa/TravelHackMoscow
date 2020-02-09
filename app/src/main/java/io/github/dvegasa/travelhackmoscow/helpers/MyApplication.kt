@@ -1,7 +1,7 @@
 package io.github.dvegasa.travelhackmoscow.helpers
 
 import android.app.Application
-import com.google.firebase.firestore.FirebaseFirestore
+import io.github.dvegasa.travelhackmoscow.pojos.GroupFirestore
 
 /**
  * Created by Ed Khalturin @DVegasa
@@ -11,6 +11,6 @@ class MyApplication : Application() {
     companion object Storage {
         var username: String = ""
 
-        var selectedGroup: FirebaseFirestore? = null
+        var selectedGroup: GroupFirestore? = null
     }
 }

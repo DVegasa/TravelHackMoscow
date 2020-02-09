@@ -77,9 +77,7 @@ class GroupCreationActivity : AppCompatActivity() {
         val group = GroupFirestore(etTitle.text.toString(), etDescription.text.toString(), invited)
         val db = FirebaseFirestore.getInstance()
 
-        val extra = intent.extras
-
-        val quiz2 = Quiz2Request(extra?.getInt("days") ?: 21, invited, extra?.getString("ban") ?: "meow")
+        val quiz2 = Quiz2Request(data?.getIntExtra("days", 21) ?: 21, invited, data?.getStringExtra("ban") ?: "meow")
         info(quiz2)
         RetrofitGenerator.retrofitClient.sendSecondQuiz(quiz2).enqueue(object :
             Callback<Poizz> {
